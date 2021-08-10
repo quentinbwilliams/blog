@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+{% block title %}{{ user.username }}{% endblock %}
+{% block content %}
+
+<h1>Welcome to {{ user.first_name }} {{ user.last_name }}'s profile</h1>
+
+<a href='/users'>Return to users</a>
+
+{% endblock %}
