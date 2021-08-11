@@ -2,8 +2,28 @@
 {% block title %}{{ user.username }}{% endblock %}
 {% block content %}
 
-<h1>Welcome to {{ user.first_name }} {{ user.last_name }}'s profile</h1>
-
-<a href='/users'>Return to users</a>
+<h1>Welcome to {{ user.username }}'s profile</h1>
+<h2>Bio</h2>
+{% if user.first_name and user.last_name %}
+    <h3>Full name: {{ user.first_name }} {{ user.last_name }}</h3>
+{% endif %}
+{% if (user.first_name or user.last_name) and not (user.first_name and user.last_name)%}
+    {% if user.first_name %}
+        <p>First name: {{ user.first_name }}</p>
+    {% endif %}
+    {% if user.last_name %}
+        <p>Last name: {{ user.last_name }}
+    {% endif %}
+{% endif %}
+<h3>Posts</h3>
+{% if user.posts %}
+    {% for post in user.posts %}
+       <li><a href="/posts/{{ post.id }}"/></li>
+    {% endfor %}
+{% endif %}
+{% if not user.posts %}
+    <p>This user has not posted yet.</p>
+{% endif %}
+<p><a href='/users'>Return to users</a></p>
 
 {% endblock %}

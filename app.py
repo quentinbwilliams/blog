@@ -24,8 +24,8 @@ db.create_all()
 def home():
     """ Redirects to users route """
     
-    return render_template('index.html')
-    # return redirect('users.html')
+    # return render_template('index.html')
+    return redirect('/users')
 
 # SERVE USERS ROUTE
 @app.route('/users', methods = ["GET"])
