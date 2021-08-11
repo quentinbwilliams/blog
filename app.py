@@ -66,10 +66,26 @@ def make_new_user():
     
     return redirect(f"/users/{new_user.id}")
 
+# HANDLE USER EDIT FORM ON USER INFO ROUTE
+@app.route('/users/<int:user-id>/edit', methods = ["GET"])
+def handle_edit_user_form():
+    """
+    Process the edit form, returning the user to the /users page.
+    """
+
+    return redirect('users.html')
+
+
+    
+# HANDLE USER DELETE FORM ON USER INFO ROUTE
+@app.roue('/users/<int:user-id>/delete', methods = ["GET", "POST"])
+def delete_user_form():
+    """
+    Delete the user.
+    """
+    
+    
 '''
-
-
-
 
 
 # HANDLE NEW USER ROUTE
@@ -93,21 +109,7 @@ def edit_user_form():
     
     return render_template()
 
-# HANDLE USER EDIT FORM ON USER INFO ROUTE
-@app.route('/users/<int:user-id>/edit', methods = ["GET"])
-def handle_edit_user_form():
-    """
-    Process the edit form, returning the user to the /users page.
-    """
 
-    return redirect('users.html')
-    
-# HANDLE USER DELETE FORM ON USER INFO ROUTE
-@app.roue('/users/<int:user-id>/delete', methods = ["GET", "POST"])
-def delete_user_form():
-    """
-    Delete the user.
-    """
 
 # SERVE USER NEW POST ROUTE
 @app.route('/users/<int:user-id>/posts/new', methods = ["GET", "POST"])
